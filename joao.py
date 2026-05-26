@@ -22,7 +22,12 @@ def verificar_encerramento(estado):
     return False
 
 
-def obter_resultado(estado):
+def verificar_limite_ciclos(ciclos_realizados, limite_ciclos):
+    """Verifica se o simulador atingiu o limite máximo de ciclos."""
+    return ciclos_realizados >= limite_ciclos
+
+
+def obter_resultado(estado, ciclos_realizados=0, limite_ciclos=0):
     """Retorna uma mensagem explicando o resultado atual da missão."""
     if estado["distancia"] >= 100:
         return "Vitória! A nave chegou ao destino final."
@@ -39,4 +44,7 @@ def obter_resultado(estado):
     if estado["moral"] <= 0:
         return "Derrota! A moral da tripulação chegou ao nível crítico."
 
-    return "A missão continua. Esta versão executa apenas 1 ciclo completo."
+    if limite_ciclos > 0 and verificar_limite_ciclos(ciclos_realizados, limite_ciclos):
+        return "Fim da missão! O limite de ciclos foi atingido antes da chegada ao destino."
+
+    return "A missão continua."

@@ -2,9 +2,10 @@
 # Responsabilidade: registrar e exibir o histórico das decisões.
 
 
-def registrar_historico(historico, escolha, estado):
-    """Registra a escolha feita e uma cópia do estado atual no histórico."""
+def registrar_historico(historico, ciclo, escolha, estado):
+    """Registra o ciclo, a escolha feita e uma cópia do estado atual no histórico."""
     registro = {
+        "ciclo": ciclo,
         "escolha": escolha,
         "estado": estado.copy()
     }
@@ -24,12 +25,12 @@ def formatar_estado(estado):
 
 def exibir_historico(historico):
     """Exibe todas as decisões registradas no histórico."""
-    print("\n=== HISTÓRICO DO CICLO ===")
+    print("\n=== HISTÓRICO DOS CICLOS ===")
 
     if len(historico) == 0:
         print("Nenhuma decisão foi registrada.")
     else:
-        for numero, registro in enumerate(historico, start=1):
-            print(f"Ciclo {numero}")
+        for registro in historico:
+            print(f"Ciclo {registro['ciclo']}")
             print(f"Escolha feita: {registro['escolha']}")
             print(formatar_estado(registro["estado"]))

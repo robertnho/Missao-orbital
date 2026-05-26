@@ -28,8 +28,13 @@ def aplicar_decisao(estado, escolha):
 
 
 def aplicar_desgaste_ciclo(estado, escolha):
-    """Informa que o ciclo foi concluído sem adicionar desgaste extra nesta entrega."""
+    """Informa que o ciclo foi concluído após a decisão escolhida."""
     if escolha == "1" or escolha == "2" or escolha == "3":
-        return "Ciclo concluído. Nesta Entrega 2, o desgaste já foi aplicado pela decisão escolhida."
+        return "Ciclo concluído. O desgaste foi aplicado pela decisão escolhida."
 
     return "Sem desgaste de ciclo, pois a escolha foi inválida."
+
+
+def escolha_valida(escolha):
+    """Verifica se a escolha digitada existe no menu do simulador."""
+    return escolha == "1" or escolha == "2" or escolha == "3"
