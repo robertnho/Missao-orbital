@@ -58,4 +58,4 @@ exibir_status(estado)
 exibir_resultado(obter_resultado(estado, ciclo - 1, LIMITE_CICLOS))
 exibir_historico(historico)
 
-print("\nsimulador com repetição executado.")
+print("\nSimulador com repetição executado.")
